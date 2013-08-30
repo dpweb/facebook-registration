@@ -4,7 +4,7 @@ var clarity = require('./clarity.js');
 
 var fbreg = require('./fbreg.js')
 (
-	  settings.appid,  // clientid a.k.a. appid
+      settings.appid,  // clientid a.k.a. appid
       settings.secret,  // app secret
       settings.fields,  // fields
       settings.domain,  // your website domain
@@ -16,8 +16,8 @@ fbreg.registered = function(o){
 	console.log(o);
 }
 
-clarity.get(/\//, function(r, s, n){
+clarity.get(/^\/$/, function(r, s, n){
 	s.end(fbreg.html);
 })
 
-clarity.listen(8080);
+clarity.listen(80);

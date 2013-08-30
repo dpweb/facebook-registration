@@ -28,19 +28,24 @@ function fbreg(signed_request, secret) {
     return data;
 }
 
-module.exports = function(appid, appsecret, fields, host, app){
+var debug = process.env.debug;
+
+module.exports = function(appid, appsecret, fields, host, app, redir){
     fields = fields || 'name,birthday,email';
     var o = {
+        registered: function(){},
         process: function(r, s){
-            var decoded = fbreg(req.body.signed_request, appsecret);
-            this.registered(decoded);
-        }
-        registered: function(o){},
+            var decoded = fbreg(r.body.signed_request, appsecret);
+            o.registered(decoded);
+            redir = redir || '/';
+            s.writeHead(302, { 'Location': redir });
+            s.end();
+        },
         html: '<iframe frameborder=0 height=340 src="https://www.facebook.com/plugins/registration.php?'+
-            'client_id='+appid+'&redirect_uri=http://'+host+'/fbreg/&fields='+fields+'"></iframe>'
+            'client_id='+appid+'&redirect_uri=http://'+host+'/fbreg&fields='+fields+'"></iframe>'
     }
     if(!app) return o;
 
-    app.all(/fbreg$/, o.process);
+    app.post(/fbreg/, o.process);
     return o;
 }

@@ -1,10 +1,11 @@
 
+var settings = require('./settings.json');
+
 var fbreg = require('./fbreg.js')
 (
-	  '461567240538848',  // clientid a.k.a. appid
-      'bf82215556750aeaf7af44d7e6757a55',  // app secret
-      'name,birthday,email',  // fields
-      'run-node.com'   // your website domain
+    appid: settings.appid,
+    secret: settings.secret,
+    
 );
 
 fbreg.registered = function(o){

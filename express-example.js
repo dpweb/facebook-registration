@@ -1,4 +1,6 @@
 
+var settings = require('./settings.json');
+
 var express = require('express');
 var app = express();
 
@@ -20,7 +22,7 @@ fbreg.registered = function(o){
 
 app.get('/', function(r, s){
 	s.setHeader('Content-Type', 'text/html');
-	console.log(fbreg.html);
+	s.end(fbreg.html);
 })
 
-app.listen(8080);
+app.listen(80);
