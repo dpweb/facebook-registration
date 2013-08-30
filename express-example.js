@@ -12,7 +12,8 @@ var fbreg = require('./fbreg.js')
       settings.secret,  // app secret
       settings.fields,  // fields
       settings.domain,  // your website domain
-      app  		// express app instance
+      app,  		// express app instance
+      '/'			// optional, redirect to this page
 );
 
 fbreg.registered = function(o){
