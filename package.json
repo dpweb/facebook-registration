@@ -1,0 +1,22 @@
+{
+  "name": "fbreg",
+  "description": "Easy Facebook Registration widget for NodeJS web servers",
+  "url": "http://github.com/dpweb/facebook-registration",
+  "keywords": [
+    "util",
+    "nodejs",
+    "express",
+    "web",
+    "html5"
+  ],
+  "author": {
+    "name": "C Borkert",
+    "email": "ILIKECHEESE@dpsw.info"
+  },
+  "main": "fbreg.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dpweb/facebook-registration.git"
+  },
+  "version": "0.0.1"
+}
